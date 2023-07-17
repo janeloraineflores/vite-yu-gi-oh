@@ -1,9 +1,10 @@
 <script>
+   
     export default {
         name: "FooterComponent",
         data() {
             return {
-
+               
             }
         },
         methods: {
