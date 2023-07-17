@@ -36,21 +36,21 @@
         <div class="container bg-light p-5">
             <div class="row ">
                 <div class="col ">
-                    <h6 class="bg-dark py-3 ps-2">
+                    <h6 class="bg-dark text-light py-3 ps-2 fw-bold">
                         Found {{ cards.length }} cards
                     </h6>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2" v-for="(card, i) in cards" :key="i">
-                    <div class="bg ">
-                        <div>
-                        <img :src="card.card_images" :alt="card.name">
+                    <div class="bg  ">
+                        <div class="image-container" v-for="(singleImage, i) in card.card_images" :key="singleImage.image_url">
+                            <img :src="singleImage.image_url" >
                         </div>
-                        <h5>
+                        <h5 class="text-uppecase text-light text-center py-1">
                             {{card.name}}
                         </h5>
-                        <p>
+                        <p class="text-center pb-3">
                             {{card.archetype}}
                         </p>
                     </div>
@@ -67,12 +67,16 @@
 
   .bg {
     background-color: #D48F38;
-    height: 400px;
   }
 
-  h6 {
-    color: white;
-    font-weight: bold;
+  .image-container{
+    width: 100%;
+    height: 90%;
+    
+    img{
+        width: 100%;
+        height: 100%;
+    }
   }
 
 </style>

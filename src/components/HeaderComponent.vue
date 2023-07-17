@@ -24,7 +24,7 @@
                 </div>
                 <div class="col">
                     <h1>
-                        YU-GI-OH API
+                        Yu-Gi-Oh API
                     </h1>
                 </div>
             </div>

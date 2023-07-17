@@ -24,7 +24,7 @@
         .then(response => {
           console.log(response.data.data);
           this.cards = response.data.data;
-          
+        
         })
     }
   };
