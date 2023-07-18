@@ -1,10 +1,10 @@
 <script>
-   
+    import { store } from '../store.js';
     export default {
         name: "HeaderComponent",
         data() {
             return {
-               
+               store
             }
         },
         methods: {

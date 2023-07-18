@@ -1,9 +1,11 @@
 <script>
+ import { store } from '../store.js';
     export default {
+       
         name: "MainComponent",
         data() {
             return {
-                
+                store
             }
         },
         methods: {
@@ -11,6 +13,11 @@
         },
 
         props: {
+            archetypes: {
+                type: Array,
+                default: []
+            },
+
             cards :{
                 type: Array, 
                 default: []
@@ -22,16 +29,31 @@
 <template>
     <main>
         <div class="container">
-            <div class="row py-4">
-                <div class="col-2">
-                    <select class="form-select" aria-label="Alien">
-                        <option selected>Alien</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+            <div class="row">
+                <div class="col">
+                    <form action="">
+                        <div class="row py-4">
+                            <div class="col-2">
+                                <select class="form-select" aria-label="Default select example" >
+                                    <option selected>Select archetype</option>
+                                    <option  :value="archetype.archetype_name" v-for="archetype in archetypes">{{archetype.archetype_name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">
+                                    Search
+                                </button>
+                            </div>
+                            <div class="col-auto">
+                                <button type="reset" class="btn btn-warning">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+            
         </div>
         <div class="container bg-light p-5">
             <div class="row ">
