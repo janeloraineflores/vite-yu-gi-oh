@@ -20,27 +20,53 @@
       };
     },
 
-    created() {
-  
-            axios
-              .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
-              .then(response => {
-              this.cards = response.data.data;
+  methods : {
+    getResults() { 
+      axios
+          .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype', {
+            params: {
+              archetype: this.store.searchArchetype
+            }
+          })
             
-              }),
-
-              axios
-                .get('https://db.ygoprodeck.com/api/v7/archetypes.php')
-                .then(response => {
-                    console.log(response.data)
-                    this.archetypes = response.data
-                })
-      }
-
-    
+          .then(response => {
+            this.cards = response.data.data
+              console.log( response.data.data)
+              
+          })
+    },
       
+    performSearch(action = 'filter') {
+        
+        
+        if(action == 'reset') {
+          this.store.searchArchetype = '';
+        }
+
+        this.getResults();
+  
     }     
-      
+  },
+
+  created() {
+  
+      axios
+        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
+        .then(response => {
+        this.cards = response.data.data;
+      })
+
+      axios
+        .get('https://db.ygoprodeck.com/api/v7/archetypes.php', {
+        archetype_name: this.store.searchArchetype})
+        
+        
+        .then(response => {
+            this.archetypes = response.data
+        })
+  }
+ 
+}      
      
 </script>
 

@@ -31,21 +31,21 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <form action="">
+                    <form action= "" @submit.prevent="$emit('search', 'filter')"  >
                         <div class="row py-4">
                             <div class="col-2">
-                                <select class="form-select" aria-label="Default select example" >
-                                    <option selected>Select archetype</option>
+                                <select class="form-select" aria-label="Default select example" v-model="store.searchArchetype" >
+                                    <option value="">Select archetype</option>
                                     <option  :value="archetype.archetype_name" v-for="archetype in archetypes">{{archetype.archetype_name}}</option>
                                 </select>
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-warning">
                                     Search
                                 </button>
                             </div>
                             <div class="col-auto">
-                                <button type="reset" class="btn btn-warning">
+                                <button type="reset" class="btn btn-dark" @click="$emit('search', 'reset')">
                                     Reset
                                 </button>
                             </div>
